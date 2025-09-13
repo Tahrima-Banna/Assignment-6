@@ -74,12 +74,29 @@
   <!-- main -->
    <main class="bg-[#F0FDF4]">
     <!-- category -->
-      <section class=" w-11/12 mx-auto">
-          <h2 class="text-center text-2xl font-bold text-black py-10">Choose Your Trees</h2>
-           <div class="grid grid-cols-12" id="all-category">
-            
-           </div>
-      </section>
+     <section class="bg-[#F0FDF4] py-10">
+  <h2 class="text-center text-2xl font-bold text-black pb-10">Choose Your Trees</h2>
+
+  <div class="w-11/12 max-w-7xl mx-auto">
+    <div class="grid grid-cols-12 gap-2">
+      
+      <!-- Left-Categories -->
+      <div id="category-list" class="col-span-2  rounded p-4"></div>
+      
+      <!-- Middle-Cards-->
+      <div id="product-list" class="col-span-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
+      
+      <!-- Right-Cart -->
+      <div id="cart" class="col-span-2 bg-white rounded-lg p-4 shadow ml-10">
+        <h3 class="font-bold mb-3">Your Cart</h3>
+        <ul id="cart-items" class="mb-3"></ul>
+        <p class="font-bold">Total: <span id="cart-total">0</span></p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
       <!-- campaign -->
        <section class="w-11/12 mx-auto">
          <h2 class="text-center text-2xl font-bold text-black py-10">About the Campaign</h2>
