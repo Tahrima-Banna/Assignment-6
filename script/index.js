@@ -5,8 +5,11 @@ const loadPlants =()=>{
     .then((json)=>displayPlants(json.categories));
 }
 //all plants
-const loadCards =()=>{
-   const url=`https://openapi.programming-hero.com/api/plants`;
+const loadCards =(id)=>{
+   let url=`https://openapi.programming-hero.com/api/plants`;
+   if(id){
+    url=`https://openapi.programming-hero.com/api/category/${id}`;
+   }
    fetch(url)
    .then((res)=>res.json())
    .then((json)=>displayCards(json.plants))
@@ -21,6 +24,7 @@ const displayPlants =(plants)=>{
     const div = document.createElement("div");
     div.className = "cursor-pointer hover:bg-[#15803D] hover:text-white p-2 mb-2 rounded";
     div.innerHTML =`<p>${cat.category_name}</p>`;
+      div.addEventListener("click", () => loadCards(cat.id));
     categoryList.appendChild(div);
   });
 }
@@ -29,17 +33,17 @@ const displayPlants =(plants)=>{
 const displayCards =(cards)=>{
   
   const productList = document.getElementById("product-list");
-  
+    productList.innerHTML = "";
   cards.forEach(card => {
     const div = document.createElement("div");
-    div.className = "w-70 bg-white rounded-xl shadow-md p-4 flex flex-col";
+    div.className = " bg-white rounded-xl shadow-md p-4 flex flex-col";
     div.innerHTML = `
       <img src="${card.image}" class="h-32 object-cover rounded mb-3">
       <h4 class="font-bold">${card.name}</h4>
       <p class="text-sm text-gray-600 mb-2">${card.description.substring(0,65)}</p>
-        <div class="flex items-center justify-between mt-2 mb-2">
+        <div class="flex items-center justify-between py-3">
     <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">${card.category}</span>
-    <span class="font-semibold text-gray-700">${card.price}</span>
+    <span class="font-semibold text-gray-700">৳${card.price}</span>
   </div>
       <button class="bg-green-600 text-white py-1 rounded hover:bg-green-700">Add to Cart</button>
     `;
