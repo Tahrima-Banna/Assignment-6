@@ -4,6 +4,11 @@ const loadPlants =()=>{
     .then((res)=>res.json())
     .then((json)=>displayPlants(json.categories));
 }
+//reemove active class
+
+
+
+
 //all plants
 const loadCards =(id)=>{
    let url=`https://openapi.programming-hero.com/api/plants`;
@@ -12,7 +17,9 @@ const loadCards =(id)=>{
    }
    fetch(url)
    .then((res)=>res.json())
-   .then((json)=>displayCards(json.plants))
+   .then((json)=>{
+    displayCards(json.plants);
+   })
 }
  //display ctagegory-name left
 const displayPlants =(plants)=>{
@@ -24,7 +31,19 @@ const displayPlants =(plants)=>{
     const div = document.createElement("div");
     div.className = "cursor-pointer hover:bg-[#15803D] hover:text-white p-2 mb-2 rounded";
     div.innerHTML =`<p>${cat.category_name}</p>`;
-      div.addEventListener("click", () => loadCards(cat.id));
+    //add active class
+        div.addEventListener("click", () => {
+            
+            const allCats = document.querySelectorAll("#category-list div");
+            allCats.forEach(c => c.classList.remove("bg-[#15803D]", "text-white"));
+
+            
+            div.classList.add("bg-[#15803D]", "text-white");
+
+            
+            loadCards(cat.id);
+        });
+
     categoryList.appendChild(div);
   });
 }
@@ -36,7 +55,7 @@ const displayCards =(cards)=>{
     productList.innerHTML = "";
   cards.forEach(card => {
     const div = document.createElement("div");
-    div.className = " bg-white rounded-xl shadow-md p-4 flex flex-col";
+    div.className = " max-h-[320px] bg-white rounded-xl shadow-md p-4 flex flex-col";
     div.innerHTML = `
       <img src="${card.image}" class="h-32 object-cover rounded mb-3">
       <h4 class="font-bold">${card.name}</h4>
