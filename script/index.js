@@ -15,7 +15,21 @@ const manageSpinner=(status)=>{
   }
 }
 
-
+//modal
+const loadWordDetail=async(id)=>{
+  const url=`https://openapi.programming-hero.com/api/plant/${id}`
+  //console.log(url);
+  const res = await fetch(url)
+  const details= await res.json();
+  displayDetails(details.data);
+}
+//word_modal
+ const displayDetails=(id)=>{
+    console.log(id);
+    const detailBox = document.getElementById('detail-container');
+    detailBox.innerHTML=`Hi I am`;
+    document.getElementById('card_modal').showModal();
+ }
 
 
 //all plants
@@ -69,10 +83,10 @@ const displayCards =(cards)=>{
     productList.innerHTML = "";
   cards.forEach(card => {
     const div = document.createElement("div");
-    div.className = " max-h-[320px] bg-white rounded-xl shadow-md p-4 flex flex-col";
+    div.className = " max-h-[330px] bg-white rounded-xl shadow-md p-4 flex flex-col";
     div.innerHTML = `
       <img src="${card.image}" class="h-32 object-cover rounded mb-3">
-      <h4 class="font-bold">${card.name}</h4>
+      <h4 onclick="loadWordDetail(${card.id})" class="font-bold py-1">${card.name}</h4>
       <p class="text-sm text-gray-600 mb-2">${card.description.substring(0,65)}</p>
         <div class="flex items-center justify-between py-3">
     <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">${card.category}</span>

@@ -89,7 +89,24 @@
 
       <!-- Middle-Cards-->
       <div id="product-list" class="col-span-full md:col-span-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
-      
+      <!-- modal -->
+   <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="card_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+   <div id="detail-container" class="">
+     <div class="">
+      <h2></h2>
+     </div>
+   </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
       <!-- Right-Cart -->
       <div id="cart" class=" col-span-full md:col-span-2 bg-white rounded-lg p-4 shadow ">
         <h3 class="font-bold mb-3">Your Cart</h3>
