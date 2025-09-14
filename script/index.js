@@ -4,13 +4,23 @@ const loadPlants =()=>{
     .then((res)=>res.json())
     .then((json)=>displayPlants(json.categories));
 }
-//reemove active class
+//spinner
+const manageSpinner=(status)=>{
+  if(status==true){
+    document.getElementById('spinner').classList.remove('hidden')
+    document.getElementById('product-list').classList.add('hidden')
+  }else{
+    document.getElementById('product-list').classList.remove('hidden')
+    document.getElementById('spinner').classList.add('hidden')
+  }
+}
 
 
 
 
 //all plants
 const loadCards =(id)=>{
+     manageSpinner(true);
    let url=`https://openapi.programming-hero.com/api/plants`;
    if(id){
     url=`https://openapi.programming-hero.com/api/category/${id}`;
@@ -19,8 +29,12 @@ const loadCards =(id)=>{
    .then((res)=>res.json())
    .then((json)=>{
     displayCards(json.plants);
+     manageSpinner(false);
    })
+  
 }
+
+
  //display ctagegory-name left
 const displayPlants =(plants)=>{
   
@@ -70,6 +84,8 @@ const displayCards =(cards)=>{
     productList.appendChild(div);
 
   });
+  manageSpinner(false);
+ 
 }
 
 loadPlants()
