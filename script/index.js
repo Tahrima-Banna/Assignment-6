@@ -1,3 +1,5 @@
+let cart =[];
+let total=0;
 // all categories
 const loadPlants =()=>{
     fetch("https://openapi.programming-hero.com/api/categories")
@@ -37,7 +39,53 @@ const loadWordDetail=async(id)=>{
                             `;
     document.getElementById('card_modal').showModal();
  }
+//addToCart function
 
+const addToCart=(id,name,price)=>{
+   cart.push({ id, name, price });
+   total += price;
+   
+  alert(`${name} added to cart`);
+  displayCart();
+
+};
+//remove cart
+const removeFromCart = (id) => {
+  const item = cart.find(i => i.id === id);   
+  if (item) total -= item.price;              
+
+  cart = cart.filter(i => i.id !== id);       
+  displayCart();                             
+};
+//displayCart
+const displayCart=()=>{
+  const cartItems = document.getElementById("cart-items");
+  const totalEl = document.getElementById('Total');
+
+  cartItems.innerHTML="";
+  let total=0;
+
+  cart.forEach(item=>{
+    total+=item.price;
+
+    let li =document.createElement("li");
+     li.className = "flex justify-between items-center bg-green-50 rounded p-2 mb-2";
+    li.innerHTML = `
+        <div>
+        <p class="font-semibold">${item.name}</p>
+        <p class="text-sm text-gray-600">৳${item.price}</p>
+      </div>
+      <button class="text-red-500 font-bold" onclick="removeFromCart(${item.id})"><i class="fa-solid fa-xmark"></i></button>
+    `;
+    cartItems.appendChild(li);
+    
+  });
+
+  totalEl.innerText = `৳${total}`;
+  
+   
+
+}
 
 //all plants
 const loadCards =(id)=>{
@@ -99,7 +147,7 @@ const displayCards =(cards)=>{
     <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">${card.category}</span>
     <span class="font-semibold text-gray-700">৳${card.price}</span>
   </div>
-      <button class="bg-green-600 text-white py-1 rounded hover:bg-green-700">Add to Cart</button>
+      <button onclick="addToCart(${card.id},'${card.name}',${card.price})" class="bg-green-600 text-white py-1 rounded hover:bg-green-700">Add to Cart</button>
     `;
     //card.querySelector("button").addEventListener("click", () => addToCart(p));
     productList.appendChild(div);
