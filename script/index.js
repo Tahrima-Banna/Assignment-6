@@ -21,13 +21,20 @@ const loadWordDetail=async(id)=>{
   //console.log(url);
   const res = await fetch(url)
   const details= await res.json();
-  displayDetails(details.data);
+  displayDetails(details.plants);
 }
 //word_modal
- const displayDetails=(id)=>{
-    console.log(id);
+ const displayDetails=(detail)=>{
+   
     const detailBox = document.getElementById('detail-container');
-    detailBox.innerHTML=`Hi I am`;
+     detailBox.className = " max-h-[350px] bg-white rounded-xl  p-2 flex flex-col";
+    detailBox.innerHTML=` <h1  class="font-bold py-2 text-2xl">${detail.name}</h1>
+                         <img src="${detail.image}" class="h-40 object-cover rounded mb-3">
+                          <p class=" py-1"><span class="text-lg font-bold">Category:</span><span class="text-xs ml-2 ">${detail.category}</span></p>
+                          <p class="py-1"><span class="text-lg font-bold">Price:</span><span class="text-xs ml-2 ">${detail.price}</span></p>
+                          <p class=" py-1"><span class="text-lg font-bold">Description:</span><span class="text-xs ml-2 ">${detail.description}</span></p>
+                             
+                            `;
     document.getElementById('card_modal').showModal();
  }
 
