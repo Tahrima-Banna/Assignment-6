@@ -155,7 +155,7 @@
   
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 w-11/12 mx-auto">
     <!-- Card 1 -->
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm hover:bg-sky-200 transition-all duration-300 ease-in-out hover:w-[510px]">
       <div class="card-body">
         <h2 class="text-center text-[#15803D] text-2xl font-bold">500K+</h2>
         <p class="text-center">Trees Planted</p>
@@ -164,7 +164,7 @@
     </div>
 
     <!-- Card 2 -->
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm  hover:bg-sky-200 transition-all duration-300 ease-in-out hover:w-[510px]">
       <div class="card-body">
         <h2 class="text-center text-[#15803D] text-2xl font-bold">120+</h2>
         <p class="text-center">Communities Involved</p>
@@ -172,7 +172,7 @@
     </div>
 
     <!-- Card 3 -->
-    <div class="card bg-base-100 shadow-sm">
+    <div class="card bg-base-100 shadow-sm  hover:bg-sky-200 transition-all duration-300 ease-in-out hover:w-[510px]">
       <div class="card-body">
         <h1 class="text-center text-[#15803D] text-2xl font-bold">30+</h1>
         <p class="text-center">Countries Reached</p>
@@ -186,9 +186,18 @@
   <h2 class="text-center font-bold text-xl text-white mb-10">Plant a Tree Today</h2>
   <fieldset class="fieldset bg-[#15803D] border-[#15803D] rounded-box w-auto md:w-md py-2 md:py-4  mx-auto border ">
     <div class="flex flex-col gap-3 md:gap-5 justify-center items-center">
-  <input type="text" class="input w-auto md:w-80" placeholder="My awesome page" />
-   <input type="text" class="input w-auto md:w-80" placeholder="my-awesome-page" />
-    <input type="text" class="input w-auto md:w-80" placeholder="Name" />
+  <input type="text" class="input w-auto md:w-80 text-gray-400" placeholder="Your Name" />
+   <input type="text" class="input w-auto md:w-80 text-gray-400" placeholder="Your Email" />
+    <!-- <input type="text" class="input w-auto md:w-80" placeholder="Name" /> -->
+    <div class="dropdown dropdown-start">
+  <div tabindex="0" role="button" class="input m-1 w-auto md:w-80">Number of Trees <i class="fa-solid fa-angle-down ml-15 md:ml-40"></i></div>
+  <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+    <li><a>Number of Trees</a></li>
+    <li><a>1 Tree-$25</a></li>
+    <li><a>2 Tree-$20</a></li>
+    <li><a>3 Tree-$25</a></li>
+  </ul>
+</div>
     <button class="w-52 md:w-80 bg-[#FACC15] rounded-2xl py-2 text-[#15803D]">Download Now</button>
   
     </div>
